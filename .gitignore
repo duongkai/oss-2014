@@ -1,0 +1,21 @@
+# Mac OS X
+*.DS_Store
+# .idea directory
+.idea
+
+# Generated files
+*.o
+*.pyc
+*.hi
+
+#Python modules
+MANIFEST
+dist/
+build/
+ 
+ # Backup files
+ *~.nib
+ \#*#
+ .#*
+ *.swp
+ *.un~
