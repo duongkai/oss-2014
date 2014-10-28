@@ -31,6 +31,9 @@ def validate_user(credential)
 end
 
 # if Content-Type: application/json
+get '/auth' do
+    "This is test site for OSS 2014"
+end
 post '/auth' do
     data = request.body.read
     parsed_identity = JSON.parse(data)
