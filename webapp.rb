@@ -14,30 +14,39 @@ JSON format: curl -H "Content-Type: application/json" -d '{"username":"tduong", 
 HTML format: 
 =end
 
-accepted_users = [
-	{:username => 'oss2014_1', :password => 'gangsta58'},
-	{:username => 'oss2014_2', :password => 'plenty31'},
-	{:username => 'oss2014_3', :password => 'headsail37'},
-	{:username => 'oss2014_4', :password => 'citole96'},
-	{:username => 'oss2014_5', :password => 'twine82'}
-]
-
 def validate_user(credential)
-	accepted_users.each do |user|
-        if credential[:username] == user[:username] and 
-            credential[:password] == user[:password] then
-            return true
-        end
-    return false        
-	end
+    accepted_users = [
+        {:username => 'oss2014_1', :password => 'gangsta58'},
+        {:username => 'oss2014_2', :password => 'plenty31'},
+        {:username => 'oss2014_3', :password => 'headsail37'},
+        {:username => 'oss2014_4', :password => 'citole96'},
+        {:username => 'oss2014_5', :password => 'twine82'}
+    ]
+
+    accepted_users.each do |user|
+        return true if credential["username"] == user[:username] and
+            credential["password"] == user[:password]
+    end
+    false
 end
 
-post '/auth', :provides => :json do
+# if Content-Type: application/json
+post '/auth' do
     data = request.body.read
-    parsed_identity = JSON.parse data
-    return validate_user
+    parsed_identity = JSON.parse(data)
+    json({:authentication => validate_user(parsed_identity).to_s})
 end
 
+=begin
+# if Content-Type: text/html
+post '/auth', :provides => :html do
+    puts "in html"
+    check_username = params[:username]
+    check_password = params[:password]
+    json({:authentication => validate_user(
+        {"username" => check_username, "password" => check_password})})
+end
+=end
 =begin
 a = '{"username":"tduong", "password":"123456"}'
 parsed = JSON.parse a
