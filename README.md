@@ -1,3 +1,3 @@
-== Software requirements
-ruby 2
-bundle
+## Software requirements
+- ruby 2
+- bundle
