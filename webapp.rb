@@ -4,6 +4,7 @@ require 'sinatra/json'
 require 'json'
 
 set :port, 4500
+#set :bind, "0.0.0.0"
 =begin
 oss2014_1 | gangsta58
 oss2014_2 | plenty31
