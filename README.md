@@ -3,5 +3,4 @@
 - bundle
 
 ## Support
----
 - Cross origin resource sharing
