@@ -2,17 +2,6 @@ require 'rubygems'
 require 'sinatra'
 require 'sinatra/json'
 require 'json'
-require 'sinatra/cross_origin'
-
-set :allow_origin, :any
-set :allow_methods, [:get, :post, :options]
-set :allow_credentials, true
-set :max_age, "1728000"
-
-# enable cross origins 
-configure do
-  enable :cross_origin
-end
 
 set :port, 4500
 
@@ -26,6 +15,12 @@ oss2014_5 | twine82
 JSON format: curl -H "Content-Type: application/json" -d '{"username":"tduong", "password":"123456"}' http://127.0.0.1:4500/auth
 HTML format: 
 =end
+# enable CORS
+before do
+    content_type :json    
+    headers 'Access-Control-Allow-Origin' => '*', 
+        'Access-Control-Allow-Methods' => ['OPTIONS', 'GET', 'POST']  
+end
 
 def validate_user(credential)
     accepted_users = [
