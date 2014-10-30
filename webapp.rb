@@ -2,8 +2,20 @@ require 'rubygems'
 require 'sinatra'
 require 'sinatra/json'
 require 'json'
+require 'sinatra/cross_origin'
+
+set :allow_origin, :any
+set :allow_methods, [:get, :post, :options]
+set :allow_credentials, true
+set :max_age, "1728000"
+
+# enable cross origins 
+configure do
+  enable :cross_origin
+end
 
 set :port, 4500
+
 #set :bind, "0.0.0.0"
 =begin
 oss2014_1 | gangsta58

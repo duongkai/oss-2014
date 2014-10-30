@@ -33,6 +33,7 @@ GEM
       rack-test
       sinatra (~> 1.4.0)
       tilt (~> 1.3)
+    sinatra-cross_origin (0.3.2)
     tilt (1.4.1)
     timers (4.0.1)
       hitimes
@@ -45,3 +46,4 @@ DEPENDENCIES
   rerun
   sinatra
   sinatra-contrib
+  sinatra-cross_origin
